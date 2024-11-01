@@ -23,5 +23,6 @@ Weekly deposit changes are tracked in a trend graph to compare current week depo
 7.Visual Layout:
 Clean and organized visuals, including pie charts, bar graphs, and trend lines, make it easy to interpret transaction behavior across different categories.
 This dashboard provides a comprehensive view of online banking transactions, with insights on both micro (area/region) and macro (monthly trends) levels.
----------------------------
+
 This dashboard provides a comprehensive view of online banking transactions, with insights on both micro (area/region) and macro (monthly trends) levels
+---------------------------------------------------------------------------------------------------------------------------------------------------------
