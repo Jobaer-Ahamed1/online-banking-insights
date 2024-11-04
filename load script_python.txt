@@ -1,0 +1,46 @@
+import sqlalchemy as sqa
+import pandas as pd
+import pyodbc
+import pymysql
+
+username = 'root'
+password = 'jobaer126'
+host = 'localhost'
+port = '3306'
+database = 'online_banking'
+
+url = 'mysql+pymysql://{0}:{1}@{2}:{3}/{4}'.format(username, password, host, port, database)
+mysql_engine = sqa.create_engine(url)
+mysql_engine 
+
+
+username = 'root'
+password = 'jobaer126'
+host = 'localhost'
+port = '3306'
+database = 'onlinebanking_warehouse'
+
+url = 'mysql+pymysql://{0}:{1}@{2}:{3}/{4}'.format(username, password, host, port, database)
+mysql_engine_2 = sqa.create_engine(url)
+mysql_engine_2 
+
+df = pd.read_sql_query("""select * from customer_joining_info;""",mysql_engine) 
+
+df.to_sql(
+        name = 'customer_joining_info',
+        con = mysql_engine_2,
+        if_exists = 'replace',
+        index = False,
+        method = 'multi',
+        chunksize = 4000
+)
+
+df = pd.read_sql_query("""select * from customer_transactions;""",mysql_engine) 
+
+df.to_sql(
+        name = 'customer_transactions',
+        con = mysql_engine_2,
+        if_exists = 'replace',
+        index = False,
+        method = 'multi',
+        chunksize = 6000
